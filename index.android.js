@@ -1,31 +1,25 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- * @flow
- */
-
-import React, { Component } from 'react';
+import React from 'react';
+import Detector from './components/Detector';
 import {
   AppRegistry,
+  Component,
   StyleSheet,
   Text,
   View
 } from 'react-native';
 
-export default class identify extends Component {
-  render() {
-    return (
+// Options to be passed to the image picker
+const image_picker_options = {
+
+}
+
+const api_key = '';
+
+class identify extends Component{
+  render(){
+    return(
       <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Welcome to React Native!
-        </Text>
-        <Text style={styles.instructions}>
-          To get started, edit index.android.js
-        </Text>
-        <Text style={styles.instructions}>
-          Double tap R on your keyboard to reload,{'\n'}
-          Shake or press menu button for dev menu
-        </Text>
+        <Detector image_picker_options={image_picker_options} apiKey={api_key} />
       </View>
     );
   }
@@ -36,18 +30,8 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
+    backgroundColor: '#FFFFFF' //#F5FCFF',
+  }
 });
 
 AppRegistry.registerComponent('identify', () => identify);
