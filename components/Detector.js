@@ -32,4 +32,28 @@ export default class Detector extends Component{
             face_data: null
         }
     }
+
+    render(){
+        return (
+            <View style={styles.container}>
+                <Image
+                    style={this.state.photo_style}
+                    source={this.state.photo}
+                    resizeMode={'contain'}>
+                {this._renderFaceBoxes.call(this)}
+                </Image>
+
+                <Button
+                    text='Pick Photo'
+                    onpress={this._pickImage.bind(this)}
+                    button_styles={styles.button}
+                    button_text_styles={styles.button_text} />
+                {this._renderDetectFaceButton.call(this)}
+
+            </View>
+        );
+    }
+
+
+
 }
