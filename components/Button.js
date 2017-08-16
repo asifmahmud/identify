@@ -1,8 +1,8 @@
-import React from 'react'
+'use strict'
+import React, {Component} from 'react';
 
 import {
   AppRegistry,
-  Component,
   Text,
   View,
   TouchableHighlight
@@ -24,3 +24,5 @@ export default class Button extends Component {
         );
     }
 }
+
+AppRegistry.registerComponent('Button', () => Button);

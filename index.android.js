@@ -1,8 +1,8 @@
-import React from 'react';
+'use strict'
+import React, {Component} from 'react';
 import Detector from './components/Detector';
 import {
     AppRegistry,
-    Component,
     StyleSheet,
     Text,
     View
@@ -15,10 +15,10 @@ const image_picker_options = {
     chooseFromLibraryButtonTitle: 'Choose from Library...',
     cameraType: 'back', // Use the front or the back camera
     mediaType: 'photo',
-    maxWidth: 480;
+    maxWidth: 480,
     quality: 1, // 0 to 1 for specifying the quality of the picture taken
     noData: false
-}
+};
 
 const api_key = '547419c178f94bb5b3f392e3069befe5';
 
