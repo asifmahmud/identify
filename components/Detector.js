@@ -54,7 +54,34 @@ export default class Detector extends Component{
     }
 
     _renderFaceBoxes(){
-
+        if (this.state.face_data){
+            let views = _.map(this.state.face_data, (x)=>{
+                let box = {
+                    position: 'absolute',
+                    top: x.faceRectangle.top,
+                    left: x.faceRectangle.left
+                };
+                let style = {
+                    width: x.faceRectangle.width,
+                    height: x.faceRectangle.height,
+                    borderWidth: 2,
+                    borderColor: '#fff'
+                };
+                let attr = {
+                    color: '#fff'
+                };
+                return (
+                    <View key={x.faceId} style={box}>
+                        <View style={style}></View>
+                        <Text style={attr}>
+                            {x.faceAttributes.gender},
+                            {x.faceAttributes.age}
+                        </Text>
+                    </View>
+                );
+            });
+            return <View>{views}</Views>;
+        }
     }
 
     _pickImage(){
@@ -83,7 +110,31 @@ export default class Detector extends Component{
     }
 
     _detectFaces(){
-        
+        RNFetchBlob.fetch(
+            'POST',
+            'https://westus.api.cognitive.microsoft.com/face/v1.0/detect?returnFaceId=true&returnFaceLandmarks=fals&returnFaceAttributes=age,gender',
+            {
+                'Accept': 'application/json',
+                'Content-Type': 'application/octet-stream',
+                'Ocp-Apim-Subscription-Key': this.props.apiKey
+            },
+            this.state.photo_data
+        ).then((res) => {
+            return res.json();
+        }).then((json)=>{
+            if (json.length){
+                this.setState({
+                    face_data: json
+                });
+            }
+            else{
+                alert("Sorry, can't see any faces in there");
+            }
+            return json;
+        }).catch(function(error){
+            console.log(error);
+            alert('Sorry, the request failed. Please try again.' + JSON.stringify(error));
+        });
     }
 
     _renderDetectFacesButton(){
