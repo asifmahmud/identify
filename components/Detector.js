@@ -9,7 +9,8 @@ import {
   StyleSheet
 } from 'react-native';
 
-import NativeModules, {ImagePickerManager} from 'NativeModules';
+import NativeModules from 'NativeModules';
+import ImagePicker from 'react-native-image-picker';
 import Button from './Button';
 import RNFetchBlob from 'react-native-fetch-blob';
 import _ from 'lodash';
@@ -34,6 +35,7 @@ export default class Detector extends Component{
     }
 
     render(){
+
         return (
             <View style={styles.container}>
                 <Image
@@ -80,16 +82,17 @@ export default class Detector extends Component{
                     </View>
                 );
             });
-            return <View>{views}</Views>;
+            return (<View>{views}</View>);
         }
     }
 
     _pickImage(){
+
         this.setState({
-            face_data: null;
+            face_data: null
         });
 
-        ImagePickerManager.showImagePicker(this.props.image_picker_options, (response) =>{
+        ImagePicker.showImagePicker(this.props.imagePickerOptions, (response) =>{
             if (response.error){
                 alert("There was an error while getting the image.");
             }

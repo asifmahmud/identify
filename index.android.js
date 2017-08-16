@@ -1,6 +1,5 @@
 'use strict'
 import React, {Component} from 'react';
-import Detector from './components/Detector';
 import {
     AppRegistry,
     StyleSheet,
@@ -8,6 +7,7 @@ import {
     View
 } from 'react-native';
 
+import Detector from './components/Detector';
 // Options to be passed to the image picker
 const image_picker_options = {
     title: 'Select Image',
@@ -17,7 +17,8 @@ const image_picker_options = {
     mediaType: 'photo',
     maxWidth: 480,
     quality: 1, // 0 to 1 for specifying the quality of the picture taken
-    noData: false
+    noData: false,
+    path: 'images'
 };
 
 const api_key = '547419c178f94bb5b3f392e3069befe5';
@@ -26,7 +27,7 @@ class identify extends Component{
     render(){
         return(
           <View style={styles.container}>
-            <Detector image_picker_options={image_picker_options} apiKey={api_key} />
+            <Detector imagePickerOptions={image_picker_options} apiKey={api_key} />
           </View>
         );
     }
