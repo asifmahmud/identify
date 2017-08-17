@@ -15,7 +15,7 @@ const image_picker_options = {
     chooseFromLibraryButtonTitle: 'Choose from Library...',
     cameraType: 'back', // Use the front or the back camera
     mediaType: 'photo',
-    maxWidth: 480,
+    maxWidth: 500,
     quality: 1, // 0 to 1 for specifying the quality of the picture taken
     noData: false,
     path: 'images'

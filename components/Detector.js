@@ -23,8 +23,8 @@ export default class Detector extends Component{
             // Setting the default photo style
             photo_style: {
                 position: 'relative',
-                width: 480,
-                height: 480
+                width: 1000,
+                height: 1000
             },
             // Boolean value that is used to determine whether to show the "Detect Faces" button
             has_photo: false,
@@ -113,31 +113,36 @@ export default class Detector extends Component{
     }
 
     _detectFaces(){
-        RNFetchBlob.fetch(
-            'POST',
-            'https://westus.api.cognitive.microsoft.com/face/v1.0/detect?returnFaceId=true&returnFaceLandmarks=fals&returnFaceAttributes=age,gender',
-            {
-                'Accept': 'application/json',
-                'Content-Type': 'application/octet-stream',
-                'Ocp-Apim-Subscription-Key': this.props.apiKey
-            },
-            this.state.photo_data
-        ).then((res) => {
-            return res.json();
-        }).then((json)=>{
-            if (json.length){
-                this.setState({
-                    face_data: json
-                });
-            }
-            else{
-                alert("Sorry, can't see any faces in there");
-            }
-            return json;
-        }).catch(function(error){
-            console.log(error);
-            alert('Sorry, the request failed. Please try again.' + JSON.stringify(error));
-        });
+        var url = 'https://westus.api.cognitive.microsoft.com/face/v1.0/detect?' +
+                  'returnFaceId=true&'          +
+                  'returnFaceLandmarks=false&'   +
+                  'returnFaceAttributes=age,gender';
+
+        var params = {
+            'Accept': 'application/json',
+            'Content-Type': 'application/octet-stream',
+            'Ocp-Apim-Subscription-Key': this.props.apiKey
+        };
+
+        RNFetchBlob.fetch('POST', url, params, this.state.photo_data)
+            .then((res) => {
+                return res.json();})
+
+            .then((json)=>{
+                if (json.length){
+                    this.setState({
+                        face_data: json
+                    });
+                }
+                else{
+                    alert("Sorry, can't see any faces in there");
+                }
+                return json;})
+
+            .catch(function(error){
+                console.log(error);
+                alert('Sorry, the request failed. Please try again.' + JSON.stringify(error));
+            });
     }
 
     _renderDetectFacesButton(){
