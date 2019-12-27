@@ -3,13 +3,11 @@ Identify is a face detection app built on the Android platform. It leverages the
 
 # Screenshots
 
-![](http://i67.tinypic.com/2e3u5x5.jpg)
+![](https://github.com/asifmahmud/identify/raw/master/Screenshot_20170909-232445.png)
 
-![](http://i66.tinypic.com/1670ehj.jpg)
+![](https://github.com/asifmahmud/identify/raw/master/Screenshot_20170910-000905.png)
 
-![](http://i66.tinypic.com/1zlfzte.jpg)
+![](https://github.com/asifmahmud/identify/raw/master/Screenshot_20170910-001108.png)
 
-![](http://i68.tinypic.com/2dugt2g.jpg)
-
-![](http://i66.tinypic.com/i6xx7q.jpg)
+![](https://github.com/asifmahmud/identify/raw/master/Screenshot_20170909-232416.png)
 
